@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Test Ride</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">HERO<span>Bikes</span></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="showroom.html">Showroom</a>
+        <a href="test-ride.html">Test Ride</a>
+    </nav>
+</header>
+
+<section class="form-section">
+    <h1>Book a Test Ride</h1>
+
+    <form id="testRideForm">
+        <input type="text" placeholder="Full Name" required>
+        <input type="tel" placeholder="Mobile Number" required>
+        <select required>
+            <option value="">Select Bike</option>
+            <option>Splendor</option>
+            <option>Xtreme</option>
+            <option>Passion</option>
+        </select>
+        <input type="date" required>
+        <button type="submit">Book Now</button>
+    </form>
+</section>
+
+<script>
+document.getElementById("testRideForm").onsubmit = function(e){
+    e.preventDefault();
+    alert("✅ Test Ride Booked Successfully!");
+};
+</script>
+
+</body>
+</html>
