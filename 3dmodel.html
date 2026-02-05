@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hero Bikes | 3D Showroom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/showroom.css">
+    <style>
+        body {
+    margin: 0;
+    overflow: hidden;
+    background: #000;
+    font-family: Arial, sans-serif;
+}
+
+#showroom {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* GAME HUD */
+.hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.hud h2 {
+    margin-bottom: 5px;
+    color: #e10600;
+}
+.hero {
+    background: url("../assets/images/bikeimg.png") center/cover no-repeat;
+}
+    </style>
+</head>
+<body>
+
+    <!-- HUD / GAME UI -->
+    <div class="hud">
+        <h2>🎮 Hero Virtual Showroom</h2>
+        <p>Drag mouse to rotate • Scroll to zoom</p>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <div id="showroom"></div>
+    <script>libs/three.min.js
+    // SCENE
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0a0a);
+
+// CAMERA
+const camera = new THREE.PerspectiveCamera(
+    60,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+camera.position.set(0, 2, 6);
+
+// RENDERER
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById("showroom").appendChild(renderer.domElement);
+
+// LIGHTS
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+
+const spotLight = new THREE.SpotLight(0xffffff, 1);
+spotLight.position.set(5, 10, 5);
+scene.add(spotLight);
+
+// FLOOR (SHOWROOM)
+const floorGeometry = new THREE.PlaneGeometry(20, 20);
+const floorMaterial = new THREE.MeshStandardMaterial({
+    color: 0x111111,
+    metalness: 0.3,
+    roughness: 0.6
+});
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2;
+scene.add(floor);
+
+// BIKE PLACEHOLDER (TEMP OBJECT)
+const bikeGeometry = new THREE.BoxGeometry(2, 1, 4);
+const bikeMaterial = new THREE.MeshStandardMaterial({
+    color: 0xe10600,
+    metalness: 0.8,
+    roughness: 0.3
+});
+const bike = new THREE.Mesh(bikeGeometry, bikeMaterial);
+bike.position.y = 0.6;
+scene.add(bike);
+
+// GAME-STYLE ROTATION (MOUSE)
+let isDragging = false;
+let prevMouseX = 0;
+
+window.addEventListener("mousedown", () => isDragging = true);
+window.addEventListener("mouseup", () => isDragging = false);
+window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    const delta = e.clientX - prevMouseX;
+    bike.rotation.y += delta * 0.005;
+    prevMouseX = e.clientX;
+});
+
+// ZOOM (SCROLL)
+window.addEventListener("wheel", (e) => {
+    camera.position.z += e.deltaY * 0.01;
+    camera.position.z = Math.min(Math.max(camera.position.z, 3), 10);
+});
+
+// RESPONSIVE
+window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ANIMATE LOOP
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();
+</script>
+
+
+    <script src="libs/three.min.js"></script>
+    <script src="js/showroom.js"></script>
+</body>
+</html>

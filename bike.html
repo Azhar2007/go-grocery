@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hero Bikes | Virtual Showroom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0b0b0b;
+    color: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #e10600;
+}
+
+.navbar nav a {
+    color: #fff;
+    margin-left: 22px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.navbar nav a:hover {
+    color: #e10600;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, #000000cc, #000000aa),
+                url('https://images.unsplash.com/photo-1618245472173-4d0b2c2c58b5') center/cover;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    line-height: 1.2;
+}
+
+.hero-content span {
+    color: #e10600;
+}
+
+.hero-content p {
+    margin: 20px 0;
+    font-size: 18px;
+    max-width: 500px;
+}
+
+.hero-buttons button {
+    padding: 14px 26px;
+    margin-right: 15px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.primary-btn {
+    background: #e10600;
+    color: white;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 80px 60px;
+    background: #111;
+}
+
+.feature-card {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+    <script>// Future animations & interactions will go here
+console.log("Hero Bikes Virtual Showroom Loaded");</script>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">HERO<span>Bikes</span></div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="3dmodel.html">Showroom</a>
+            <a href="compare.html">Compare</a>
+            <a href="#">Offers & EMI</a>
+            <a href="final.html">Test Ride</a>
+            <a href="#">Service</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Enter the Future of<br><span>Hero Bikes</span></h1>
+            <p>Experience our motorcycles in a next-gen game-style virtual showroom.</p>
+
+            <div class="hero-buttons">
+                <button class="primary-btn">Enter 3D Showroom </button>
+                <button class="secondary-btn">Compare Bikes</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>🎮 Game-Style Showroom</h3>
+            <p>Explore bikes like a video game with full 3D interaction.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>⚖️ Bike Comparison</h3>
+            <p>Compare models, specs, price and performance instantly.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🧾 EMI & Offers</h3>
+            <p>Check EMI plans and exclusive Hero offers.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📅 Book Test Ride</h3>
+            <p>Schedule a test ride or service in just a few clicks.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Hero Bikes Virtual Experience | Concept Design</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

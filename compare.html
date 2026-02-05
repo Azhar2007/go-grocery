@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Hero Bikes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">HERO<span>Bikes</span></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="showroom.html">Showroom</a>
+        <a href="compare.html">Compare</a>
+    </nav>
+</header>
+
+<section class="compare-section">
+    <h1>Compare Hero Bikes</h1>
+
+    <div class="compare-box">
+        <select id="bike1"></select>
+        <select id="bike2"></select>
+    </div>
+
+    <table id="compareTable">
+        <tr><th>Feature</th><th>Bike 1</th><th>Bike 2</th></tr>
+        <tr><td>Price</td><td id="p1"></td><td id="p2"></td></tr>
+        <tr><td>Mileage</td><td id="m1"></td><td id="m2"></td></tr>
+        <tr><td>Engine</td><td id="e1"></td><td id="e2"></td></tr>
+    </table>
+</section>
+
+<script src="js/compare.js">
+    const bikes = {
+    Splendor: { price: "₹75,000", mileage: "65 km/l", engine: "97cc" },
+    Xtreme: { price: "₹1,20,000", mileage: "45 km/l", engine: "199cc" },
+    Passion: { price: "₹80,000", mileage: "60 km/l", engine: "110cc" }
+};
+
+const bike1 = document.getElementById("bike1");
+const bike2 = document.getElementById("bike2");
+
+for (let bike in bikes) {
+    bike1.innerHTML += `<option value="${bike}">${bike}</option>`;
+    bike2.innerHTML += `<option value="${bike}">${bike}</option>`;
+}
+
+function compare() {
+    const b1 = bikes[bike1.value];
+    const b2 = bikes[bike2.value];
+
+    document.getElementById("p1").innerText = b1.price;
+    document.getElementById("m1").innerText = b1.mileage;
+    document.getElementById("e1").innerText = b1.engine;
+
+    document.getElementById("p2").innerText = b2.price;
+    document.getElementById("m2").innerText = b2.mileage;
+    document.getElementById("e2").innerText = b2.engine;
+}
+
+bike1.onchange = compare;
+bike2.onchange = compare;
+</script>
+</body>
+</html>
